@@ -1,0 +1,24 @@
+<ion-view title="{{topic.title}}">
+  <ion-content has-header="true" padding="true">
+   {{topic.title}}
+   
+    <ion-list>
+    <ion-item  type="item-text-wrap"
+        ng-repeat="tutor in topic.tutors | filter:search | limitTo:listlength">
+		<div align="left">
+		<img src="img/{{tutor.photo}}.jpg" width="25px" height="50px"/>
+		 {{tutor.name}}
+		</div>
+		<div align="right">
+		  {{tutor.stars}}
+		</div>
+		
+
+      </ion-item>
+    </ion-list>
+     <ion-infinite-scroll ng-if="listlength<=topic.tutors.length" 
+            on-infinite="loadMore()" distance="3%">
+      </ion-infinite-scroll>
+  </ion-content>
+
+</ion-view>
